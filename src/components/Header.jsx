@@ -15,6 +15,7 @@ const Header = () => {
       <UilMapMarker className="App__location-btn"/>
       <div className="App__units">
         <p className="App__celsius-btn">°C</p>
+        <div></div>
         <p className="App__fahrenheit-btn">°F</p>
       </div>
     </div>

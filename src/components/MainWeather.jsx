@@ -22,8 +22,10 @@ const MainWeather = () => {
           <p className="App__weather">Overcast clouds</p>
         </div>
         <div className="App__right">
-          <p className="App__date">Wednesday, 23 November</p>
-          <p className="App__time">Local time: 6:30 PM</p>
+          <div className="App__date-and-time">
+            <p className="App__date">Wednesday, 23 November</p>
+            <p className="App__time">Local time: 6:30 PM</p>
+          </div>
           <div className="App__details-card">
             <div>
               <UilTemperatureHalf/>
