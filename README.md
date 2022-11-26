@@ -4,7 +4,7 @@ Used:
 - Openweather API for getting city's coordinates by it's name, current weather and forecast weather with 3 hrs step
 - Unicons by IconScout for weather parameters' icons
 - Luxon for converting time from a timestamp in secs to a good looking time/date :)
-- Navigator for getting current users' location
+- Navigator for getting a current users' location
 
 Temperature can be represented in celsius or fahrenheit as you wish:
 
