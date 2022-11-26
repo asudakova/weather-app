@@ -7,6 +7,7 @@ Used:
 - Navigator for getting current users' location
 
 Temperature can be represented in celsius or fahrenheit as you wish:
+
 ![image](https://user-images.githubusercontent.com/102738427/204082785-008f9f2c-629b-45c7-81b2-af9033c8873b.png)
 ![image](https://user-images.githubusercontent.com/102738427/204082833-6655fc59-fbfc-4455-9f17-f415a2bc8eb8.png)
 
