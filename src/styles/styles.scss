@@ -99,6 +99,11 @@
   }
   &__celsius-btn,
   &__fahrenheit-btn {
+    font-size: 1.25rem;
+    line-height: 1.4375rem;
+    color: #ffffff;
+    background-color: transparent;
+
     cursor: pointer;
     transition: .2s ease-in-out;
     &:hover {

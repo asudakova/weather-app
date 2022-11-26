@@ -9,35 +9,35 @@ import {
   UilWind
 } from "@iconscout/react-unicons";
 
-const MainWeather = () => {
+const MainWeather = ({weather, units}) => {
   return (
     <div className="App__main">
       <div className="App__info">
         <div className="App__left">
-          <h1 className="App__title">New York, US</h1>
+          <h1 className="App__title">{weather.name}, {weather.country}</h1>
           <div className="App__temp">
-            <img src="http://openweathermap.org/img/wn/03d@2x.png" alt="Weather icon"/>
-            <p>5°</p>
+            <img src={weather.iconURL} alt="Weather icon"/>
+            <p>{Math.round(weather.temp)}°{units==='metric'?'C':'F'}</p>
           </div>
-          <p className="App__weather">Overcast clouds</p>
+          <p className="App__weather">{weather.main}</p>
         </div>
         <div className="App__right">
           <div className="App__date-and-time">
-            <p className="App__date">Wednesday, 23 November</p>
-            <p className="App__time">Local time: 6:30 PM</p>
+            <p className="App__date">{weather.date}</p>
+            <p className="App__time">Local time: {weather.local_time}</p>
           </div>
           <div className="App__details-card">
             <div>
               <UilTemperatureHalf/>
-              <p>Real feel:<span>3°</span></p>
+              <p>Real feel:<span>{Math.round(weather.feels_like)}°</span></p>
             </div>
             <div>
               <UilTear/>
-              <p>Humidity:<span>60%</span></p>
+              <p>Humidity:<span>{weather.humidity}%</span></p>
             </div>
             <div>
               <UilWind/>
-              <p>Wind:<span>2 mph</span></p>
+              <p>Wind:<span>{weather.speed} mph</span></p>
             </div>
           </div>
         </div>
@@ -45,19 +45,19 @@ const MainWeather = () => {
       <div className="App__details-row">
         <div>
           <UilSun/>
-          <p>Sunrise:<span>6:20 AM</span></p>
+          <p>Sunrise:<span>{weather.sunrise_time}</span></p>
         </div>
         <div>
           <UilSunset/>
-          <p>Sunset:<span>8:45 PM</span></p>
+          <p>Sunset:<span>{weather.sunset_time}</span></p>
         </div>
         <div>
           <UilArrowUp/>
-          <p>High:<span>7°</span></p>
+          <p>High:<span>{Math.round(weather.temp_max)}°</span></p>
         </div>
         <div>
           <UilArrowDown/>
-          <p>Low:<span>4°</span></p>
+          <p>Low:<span>{Math.round(weather.temp_min)}°</span></p>
         </div>
       </div>
     </div>
