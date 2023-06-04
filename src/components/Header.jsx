@@ -34,6 +34,8 @@ const Header = ({setQuery, units, setUnits}) => {
 
         setQuery({lat, lon})
       })
+      setCity('');
+      setDebouncedCity('');
     }
   }
 
