@@ -1,26 +1,29 @@
-import React, {useState} from 'react';
-import {UilMapMarker, UilSearch} from "@iconscout/react-unicons";
+import React, {useState, useCallback, useEffect} from 'react';
+import {UilMapMarker, UilMultiply} from "@iconscout/react-unicons";
+import { customDebounce } from '../services/debounce';
 
 const Header = ({setQuery, units, setUnits}) => {
   const [city, setCity] = useState("");
+  const [debouncedCity, setDebouncedCity] = useState('');
 
-  const handleSearchClick = () => {
-    if (city !== "") {
-      setQuery({q: city});
-      setCity("")
+  useEffect(() => {
+    if (debouncedCity !== '') {
+      setQuery({q: debouncedCity});
     }
-  }
+  }, [debouncedCity]);
 
-  const handleSearchEnter = (event) => {
-    if (event.key === 'Enter' && city !== "") {
-      setQuery({q: city});
-      setCity("")
-    }
-  }
+  const handleInputChange = (event) => {
+    setCity(event.target.value);
+    debouceInput(event.target.value);
+  };
 
-  const handleUnitsChange = (e) => {
-    const currentUnit = e.currentTarget.name;
-    if (units !== currentUnit) setUnits(currentUnit);
+  const debouceInput = useCallback(
+    customDebounce((str) => setDebouncedCity(str), 700), []
+  );
+
+  const handleClearClick = () => {
+    setCity('');
+    setDebouncedCity('');
   }
 
   const handleLocationClick = () => {
@@ -34,19 +37,23 @@ const Header = ({setQuery, units, setUnits}) => {
     }
   }
 
+  const handleUnitsChange = (e) => {
+    const currentUnit = e.currentTarget.name;
+    if (units !== currentUnit) setUnits(currentUnit);
+  }
+
   return (
     <div className="App__header">
       <div className="App__search">
         <input
           value={city}
-          onChange={event => setCity(event.target.value)}
-          onKeyUp={handleSearchEnter}
+          onChange={handleInputChange}
           type="text"
           className="App__search"
           placeholder="Enter location..."
         />
-        <UilSearch
-          onClick={handleSearchClick}
+        <UilMultiply
+          onClick={handleClearClick}
           className="App__search-btn"
         />
       </div>
